@@ -8,10 +8,11 @@ public class PlayerMove : MonoBehaviour {
     public float moveForce;
     Animator blueAnim;
     public LayerMask groundLayer;
-    
-  
-	// Use this for initialization
-	void Start () {     
+    Transform currentPlanet;
+    Rigidbody2D body;
+
+    // Use this for initialization
+    void Start () {     
         
         blueAnim = GetComponent<Animator>();
        
@@ -41,12 +42,36 @@ public class PlayerMove : MonoBehaviour {
 
     }
 
+    void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Planet")
+        {
+            currentPlanet = collision.transform;
+            Debug.Log("colliding with planet");
+        }
+    }
+
+    void UpdatePlanetRotation()
+    {
+        if (currentPlanet != null)
+        {
+            Vector2 planetUp = (transform.position - currentPlanet.position).normalized;
+            Vector2 planetRight = new Vector2(planetUp.y, -planetUp.x);
+            float angleFromPlanetRight = Mathf.Atan2(planetRight.y, planetRight.x) * Mathf.Rad2Deg;
+            if (body == null)
+            {
+                body = GetComponent<Rigidbody2D>();
+            }
+            body.MoveRotation(angleFromPlanetRight);
+        }
+    }
+
     void PlayerJump()
     {
         if (IsGrounded())
         {
             Rigidbody2D rb = this.GetComponent<Rigidbody2D>();
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.UpArrow))
             {
                 rb.AddRelativeForce(new Vector2(0, jumpForce));
                 Debug.Log("jumping");
@@ -65,11 +90,27 @@ public class PlayerMove : MonoBehaviour {
         if (IsGrounded())
         {
             Rigidbody2D rb = this.GetComponent<Rigidbody2D>();
+
             rb.AddRelativeForce(new Vector2(Input.GetAxis("Horizontal") * moveForce, 0));
+
+            if (Input.GetAxis("Horizontal") < 0)
+            {
+                
+                GetComponent<SpriteRenderer>().flipX = true;
+            }
+            else
+            {
+                GetComponent<SpriteRenderer>().flipX = false;
+            }
+                    
             blueAnim.SetBool("isWalking", true);
         }
         return;
      }
+
+   
+
+  
 
 }
 

@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class PlayerCotroller : MonoBehaviour {
+public class Win : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -11,6 +12,14 @@ public class PlayerCotroller : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene(0);
+        }
+
 	}
+
+
 }

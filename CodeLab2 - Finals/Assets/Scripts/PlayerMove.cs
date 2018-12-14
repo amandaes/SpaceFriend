@@ -8,6 +8,7 @@ public class PlayerMove : MonoBehaviour {
     public float moveForce;
     Animator blueAnim;
     public LayerMask groundLayer;
+
     Transform currentPlanet;
     Rigidbody2D body;
 
@@ -42,29 +43,7 @@ public class PlayerMove : MonoBehaviour {
 
     }
 
-    void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Planet")
-        {
-            currentPlanet = collision.transform;
-            Debug.Log("colliding with planet");
-        }
-    }
 
-    void UpdatePlanetRotation()
-    {
-        if (currentPlanet != null)
-        {
-            Vector2 planetUp = (transform.position - currentPlanet.position).normalized;
-            Vector2 planetRight = new Vector2(planetUp.y, -planetUp.x);
-            float angleFromPlanetRight = Mathf.Atan2(planetRight.y, planetRight.x) * Mathf.Rad2Deg;
-            if (body == null)
-            {
-                body = GetComponent<Rigidbody2D>();
-            }
-            body.MoveRotation(angleFromPlanetRight);
-        }
-    }
 
     void PlayerJump()
     {
@@ -74,10 +53,12 @@ public class PlayerMove : MonoBehaviour {
             if (Input.GetKeyDown(KeyCode.UpArrow))
             {
                 rb.AddRelativeForce(new Vector2(0, jumpForce));
+                
+                blueAnim.SetBool("isWalking", false);
                 Debug.Log("jumping");
             }
 
-            blueAnim.SetBool("isWalking", false);
+            
             Debug.Log("not walking");
         }
         return;
@@ -108,9 +89,32 @@ public class PlayerMove : MonoBehaviour {
         return;
      }
 
-   
+    void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Planet")
+        {
+            currentPlanet = collision.transform;
+            Debug.Log("colliding with planet");
+        }
+    }
 
-  
+    void UpdatePlanetRotation()
+    {
+        if (currentPlanet != null)
+        {
+            Vector2 planetUp = (transform.position - currentPlanet.position).normalized;
+            Vector2 planetRight = new Vector2(planetUp.y, -planetUp.x);
+            float angleFromPlanetRight = Mathf.Atan2(planetRight.y, planetRight.x) * Mathf.Rad2Deg;
+            if (body == null)
+            {
+                body = GetComponent<Rigidbody2D>();
+            }
+            body.MoveRotation(angleFromPlanetRight);
+        }
+    }
+
+
+
 
 }
 

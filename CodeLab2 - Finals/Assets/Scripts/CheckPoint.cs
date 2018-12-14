@@ -5,10 +5,14 @@ using UnityEngine;
 public class CheckPoint : MonoBehaviour {
 
     private GameMaster gm;
+    public GameObject glow;
 
 	// Use this for initialization
 	void Start () {
+
         gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameMaster>();
+        
+
 	}
 	
 	// Update is called once per frame
@@ -21,6 +25,7 @@ public class CheckPoint : MonoBehaviour {
         if (other.CompareTag("Player"))
         {
             gm.lastCheckPointPos = transform.position;
+            glow.SetActive(true);
         }
     }
 }

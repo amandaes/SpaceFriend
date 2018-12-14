@@ -228,12 +228,12 @@ Prefab:
     - target: {fileID: 250139703481184282, guid: c076b301aaf7c274683f984d73003552,
         type: 2}
       propertyPath: m_ForceMagnitude
-      value: -30
+      value: -25
       objectReference: {fileID: 0}
     - target: {fileID: 250139703481184282, guid: c076b301aaf7c274683f984d73003552,
         type: 2}
       propertyPath: m_DistanceScale
-      value: 1.93
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4421679923618002, guid: c076b301aaf7c274683f984d73003552, type: 2}
       propertyPath: m_LocalScale.x
@@ -461,7 +461,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: f3ad0c00e4a8d12439153c18818a9a7f, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 528650048f2f13f4c83089d70210f156, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.29
   m_Pitch: 1
@@ -5526,7 +5526,7 @@ Prefab:
     - target: {fileID: 250665100278347654, guid: 99fa684ea3d7dd643a6312446add5af6,
         type: 2}
       propertyPath: m_ForceMagnitude
-      value: -30
+      value: -25
       objectReference: {fileID: 0}
     - target: {fileID: 4622023540054236, guid: 99fa684ea3d7dd643a6312446add5af6, type: 2}
       propertyPath: m_LocalScale.x
@@ -5724,7 +5724,7 @@ Prefab:
     - target: {fileID: 250665100278347654, guid: 99fa684ea3d7dd643a6312446add5af6,
         type: 2}
       propertyPath: m_ForceMagnitude
-      value: -30
+      value: -25
       objectReference: {fileID: 0}
     - target: {fileID: 1845053726169168, guid: 99fa684ea3d7dd643a6312446add5af6, type: 2}
       propertyPath: m_IsActive

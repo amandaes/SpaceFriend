@@ -31,10 +31,6 @@ public class EnemyScript : MonoBehaviour {
             transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
 
         }
-        //if(Vector2.Distance(transform.position, target.position) <= distanceBetween)
-       // {
-       //     transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
-       // }
         
 
 	}

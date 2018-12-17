@@ -24,6 +24,7 @@ public class PlayerMove : MonoBehaviour {
     {
         PlayerJump();
         PlayerWalk();
+        UpdatePlanetRotation();
     }
 
     bool IsGrounded()
@@ -50,7 +51,7 @@ public class PlayerMove : MonoBehaviour {
         if (IsGrounded())
         {
             Rigidbody2D rb = this.GetComponent<Rigidbody2D>();
-            if (Input.GetKeyDown(KeyCode.UpArrow))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
                 rb.AddRelativeForce(new Vector2(0, jumpForce));
                 

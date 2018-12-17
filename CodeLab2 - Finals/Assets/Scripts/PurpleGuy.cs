@@ -17,10 +17,10 @@ public class PurpleGuy : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (gameObject.CompareTag("Player"))
+        if (collision.gameObject.tag=="Player")
         {
 
-
+            Debug.Log("Collided with player");
             SceneManager.LoadScene(2);
         }
     }

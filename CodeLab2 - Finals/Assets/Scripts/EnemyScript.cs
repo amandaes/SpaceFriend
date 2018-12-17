@@ -31,9 +31,11 @@ public class EnemyScript : MonoBehaviour {
             transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
 
         }
-        
 
-	}
+        UpdatePlanetRotation();
+
+
+    }
 
     void OnTriggerEnter2D(Collider2D col)
     {
